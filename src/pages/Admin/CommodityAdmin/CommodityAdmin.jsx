@@ -155,6 +155,7 @@ export default class CommodityAdmin extends Component {
     message.success(`id为${comId}的商品已删除`)
   }
   handleEditCol(colNum) {
+    console.log(this.state.data[colNum])
     this.setState({
       isEditModalVisible: true,
       willEditCom: this.state.data[colNum]
@@ -214,7 +215,8 @@ export default class CommodityAdmin extends Component {
         <Modal title="修改用户信息" visible={isEditModalVisible}
           cancelText="取消修改" okText="确认修改"
           onOk={this.handleEditCom}
-          onCancel={() => this.setState({isEditModalVisible: false})}>
+          onCancel={() => this.setState({isEditModalVisible: false})}
+          key={Date.now()}>
           <Form labelCol={{ span: 6 }} wrapperCol={{ span: 18 }}>
             <Form.Item label="ID">
               {willEditCom.comId}
