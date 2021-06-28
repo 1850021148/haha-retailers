@@ -100,7 +100,7 @@ export default class CommodityAdmin extends Component {
     this.setState({
       loading: false,
       total: data.count,
-      data: data.commodities.map(item => ({...item, user: {username: ''}, userId: item.userId, url: `/commodity/${item.comId}`}))
+      data: data.commodities.map(item => ({...item, user: {username: '', userId: item.userId}, url: `/commodity/${item.comId}`}))
     })
     // let data = []
     // for (let index = 0; index < 5; index++) {
