@@ -42,9 +42,11 @@ class PublishCommodity extends Component {
       return
     }
     const formdata = new FormData()
-    for (const [key,value] in Object.entries({userId, comName, comImg, comQuantity, comPrice})) {
+    for (const [key,value] of Object.entries({userId, comName, comImg, comQuantity, comPrice})) {
       formdata.append(key, value)
     }
+    formdata.append('comType', 0)
+    formdata.append('comStatus', 0)
     axios.post('/api/commodity/publish', formdata)
       .then(data => data.data)
       .then(data => {
@@ -69,13 +71,13 @@ class PublishCommodity extends Component {
       )
     }
     // 若已登录
-    const {comQuantity, comPrice, imgSrc} = this.state
+    const {comName, comQuantity, comPrice, imgSrc} = this.state
     return (
       <div className="publish-page">
         <Form labelCol={{ span: 10 }} wrapperCol={{ span: 6 }}>
           <Form.Item label="商品名" name="username" 
             rules={[{ required: true, message: '请输入商品名' }]}>
-            <Input placeholder="请输入商品名"
+            <Input placeholder="请输入商品名" value={comName}
               onInput={(event) => this.setState({comName: event.target.value})} />
           </Form.Item>
           <Form.Item label="商品图片">
