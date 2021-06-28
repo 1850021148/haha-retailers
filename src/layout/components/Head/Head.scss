@@ -1,0 +1,86 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  background-color: #FFE300;
+  font-size: 14px;
+}
+.logo {
+  height: 100%;
+  img {
+    height: 100%;
+    transform: scale(1.2);
+  }
+}
+.nav-item {
+  padding: 0 20px;
+  display: inline-block;
+  height: 100%;
+  line-height: 60px;
+  color: black;
+  &.search.hide {
+    opacity: 0;
+    transition: .3s;
+  }
+}
+.middle-search-bar {
+  display: flex;
+  .cancel-search-bar {
+    padding: 0 20px;
+  }
+}
+.middle-nav {
+  height: 100%;
+  .nav-item {
+    &.active {
+      font-weight: bold;
+    }
+    &:hover {
+      color: #FFE300;
+      background-color: #282828;
+    }
+  }
+}
+.right {
+  display: flex;
+  .nav-item:hover {
+    font-weight: bold;
+  }
+  .search>img {
+    width: 25px;
+    height: 25px;
+  }
+  .login-register-nav, .search {
+    &:hover {
+      background-color: #282828;
+      color: #FFE300;
+      .nav-item {
+        color: #FFE300;
+      }
+    }
+  }
+  .logined-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 140px;
+    .username {
+      font-weight: bold;
+    }
+    .logout-btn {
+      padding: 0 10px;
+      height: 100%;
+      &:hover {
+        background-color: #282828;
+        color: #FFE300;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+input {
+  background-color: #FFE300;
+  color: black;
+  border: none;
+  outline: none;
+  &::placeholder {
+    color: black;
+    opacity: .4;
+  }
+}
+button {
+  background-color: initial;
+  border: none;
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}

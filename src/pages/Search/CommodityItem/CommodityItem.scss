@@ -1,0 +1,41 @@
+.commodity-item {
+  margin: 0 10px;
+  margin-bottom: 20px;
+  width: 275px;
+  height: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0 10px lightgray;
+  .cover {
+    width: 275px;
+    height: 205px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .detail-box {
+    padding: 10px;
+    position: relative;
+    .com-price {
+      position: absolute;
+      right: 20px;
+      font-size: 20px;
+    }
+    .com-name {
+      font-size: 20px;
+    }
+    .com-quantity {
+      display: block;
+      color: gray;
+    }
+    .com-addedDate {
+      display: block;
+    }
+  }
+  .bottom {
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 10px;
+  }
+}

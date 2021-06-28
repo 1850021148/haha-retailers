@@ -1,0 +1,15 @@
+.ant-menu:first-child {
+  position: relative;
+  height: calc( 100vh - 60px );
+  background-color: #000C17;
+  .ant-menu-item-selected {
+    background-color: #1890FF !important;
+  }
+  .ant-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #1890FF !important;
+    border-color: #1890FF !important;
+  }
+}
