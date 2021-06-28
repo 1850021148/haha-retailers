@@ -22,6 +22,7 @@ const {Search} = Input
 
 export default class CommodityAdmin extends Component {
   state = {
+    editModalKey: 0,
     isEditModalVisible: false,
     isDelModalVisible: false,
     willDelComId: null,
@@ -160,6 +161,7 @@ export default class CommodityAdmin extends Component {
       isEditModalVisible: true,
       willEditCom: this.state.data[colNum]
     })
+    this.reRenderEditModal()
   }
   handleEditCom = async() => {
     const {willEditCom} = this.state
@@ -184,6 +186,11 @@ export default class CommodityAdmin extends Component {
     this.setState({
       data: newData,
       isEditModalVisible: false
+    })
+  }
+  reRenderEditModal = () => {
+    this.setState({
+      editModalKey: Date.now()
     })
   }
   render() {
@@ -216,7 +223,7 @@ export default class CommodityAdmin extends Component {
           cancelText="取消修改" okText="确认修改"
           onOk={this.handleEditCom}
           onCancel={() => this.setState({isEditModalVisible: false})}
-          key={Date.now()}>
+          key={this.state.editModalKey}>
           <Form labelCol={{ span: 6 }} wrapperCol={{ span: 18 }}>
             <Form.Item label="ID">
               {willEditCom.comId}

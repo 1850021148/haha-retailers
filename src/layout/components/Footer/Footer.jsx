@@ -5,7 +5,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer style={style}>
-        this is footer
+        @哈哈有限公司
       </footer>
     )
   }
