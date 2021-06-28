@@ -5,6 +5,7 @@ import About from './pages/About/About'
 import NoFound from './pages/NoFound/NoFound'
 import Search from './pages/Search/Search';
 import Commodity from './pages/Commodity/Commodity';
+import PublishCommodity from './pages/PublishCommodity/PublishCommodity';
 import LogReg from './pages/LogReg/LogReg';
 import { connect } from 'react-redux';
 import Admin from './pages/Admin/Admin';
@@ -34,6 +35,7 @@ function App(props) {
             <Route path="/about" component={About} />
             <Route path="/search" component={Search} />
             <Route path="/commodity/:id" component={Commodity} />
+            <Route path="/publish-commodity" component={PublishCommodity} />
             <Route path="/404" component={NoFound} />
             <Redirect to="/404" />
           </Switch>

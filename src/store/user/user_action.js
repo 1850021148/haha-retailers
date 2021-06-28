@@ -2,10 +2,10 @@ import * as actionTypes from './action-types'
 import axios from 'axios'
 import store from './store'
 
-function setUserInfo(username, password, isAdmin=false) {
+function setUserInfo({username, password, isAdmin=false, userId}) {
   return {
     type: actionTypes.SETUSERINFO,
-    data: { username, password, isAdmin }
+    data: { username, password, isAdmin, userId }
   }
 }
 
@@ -25,12 +25,7 @@ export function login(username, password, push) {
       .then(data => {
         console.log(data)
         if(data.code === 0) {
-          // 如果登录的是admin
-          if(username === 'ming' && password === '121388') {
-            dispatch(setUserInfo(username, password, true))
-          } else { // 登录的是普通用户
-            dispatch(setUserInfo(username, password))
-          }
+          dispatch(setUserInfo(data.data))
           push('/')
         } else {
           alert('登录失败')
@@ -69,7 +64,7 @@ export function register(username, password, push) {
       .then(data => data.data)
       .then(data => {
         if(data.code === 0) {
-          dispatch(setUserInfo(username, password))
+          dispatch(setUserInfo({username, password}))
           push('/')
         } else {
           alert('注册失败')

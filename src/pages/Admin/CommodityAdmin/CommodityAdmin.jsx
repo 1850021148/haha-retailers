@@ -168,7 +168,11 @@ export default class CommodityAdmin extends Component {
     // 网络请求修改
     const formdata = new FormData()
     for (const [key,value] of Object.entries(willEditCom)) {
-      console.log('willEditCom: ', key, value)
+      if(['user', 'comAddedDate', 'comType', 'url'].includes(key)) continue
+      if(key === 'comImg') {
+        formdata.append('comImg', null)
+        continue
+      }
       formdata.append(key === 'comImgFile' ? 'comImg' : key, value)
     }
     const {data: {code}, status} = await axios.post(`/api/commodity/update`, formdata)
@@ -176,17 +180,11 @@ export default class CommodityAdmin extends Component {
       message.error(`id为${willEditCom.comId}的用户修改失败`)
       return
     }
-    // 页面上修改
-    let newData = this.state.data.map(item => {
-      if(item.comId === willEditCom.comId) {
-        return willEditCom
-      }
-      return item
-    })
+    // 刷新页面，重新获取数据
     this.setState({
-      data: newData,
       isEditModalVisible: false
     })
+    this.handlePaginationChange(this.state.current)
   }
   reRenderEditModal = () => {
     this.setState({
@@ -246,6 +244,10 @@ export default class CommodityAdmin extends Component {
             <Form.Item label="库存">
               <Input style={{width: '80px'}} type="number" placeholder="请输入库存" defaultValue={willEditCom.comQuantity}
                 onInput={(event) => this.setState({willEditCom: {...this.state.willEditCom, comQuantity: event.target.value}})} />
+            </Form.Item>
+            <Form.Item label="价格">
+              <Input style={{width: '80px'}} type="number" placeholder="请输入库存" defaultValue={willEditCom.comPrice}
+                onInput={(event) => this.setState({willEditCom: {...this.state.willEditCom, comPrice: event.target.value}})} />
             </Form.Item>
             <Form.Item label="状态">
               {

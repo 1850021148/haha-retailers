@@ -55,6 +55,7 @@ class Head extends Component {
       middleComp = (
         <nav className="middle-nav">
           <NavLink to="/" exact className="nav-item">首页</NavLink>
+          <NavLink to="/publish-commodity" className="nav-item">商品发布</NavLink>
           <NavLink to="/about" className="nav-item">关于我们</NavLink>
           {
             this.props.showAdmin ? 
