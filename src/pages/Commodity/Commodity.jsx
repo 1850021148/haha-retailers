@@ -51,13 +51,12 @@ export default class Commodity extends Component {
       return (
         <Result
           status="success"
-          title="Successfully Purchased Cloud Server ECS!"
-          subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+          title="购买商品成功"
           extra={[
             <Button type="primary" key="console">
-              <Link to="/search">Go SearchPage</Link>
+              <Link to="/search">点击前往搜索</Link>
             </Button>,
-            <Button key="buy" onClick={this.handleBuyAgain}>Buy Again</Button>,
+            <Button key="buy" onClick={this.handleBuyAgain}>再次购买</Button>,
           ]}
         />
       )

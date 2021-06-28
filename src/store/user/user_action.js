@@ -31,7 +31,6 @@ export function login(username, password, push) {
           } else { // 登录的是普通用户
             dispatch(setUserInfo(username, password))
           }
-          console.log(push)
           push('/')
         } else {
           alert('登录失败')
@@ -66,18 +65,18 @@ export function logout() {
 export function register(username, password, push) {
   let hasLogin = !!store.getState()
   return async (dispatch) => {
-    try {
-      const {data: {code}, status} = axios.post('/api/register', {username, password})
-      if(code === 0) { // 注册成功
-        // 若之前就有账号登录，则不进行登录
-        if(hasLogin) return
-        // 若之前就未登录，则自动登录
-        dispatch(setUserInfo(username,password))
-      } else {
-        alert('注册失败')
-      }
-    } catch (error) {
-      alert('error from register: ', error.massage)
-    }
+    axios.post('/api/register', {username, password})
+      .then(data => data.data)
+      .then(data => {
+        if(data.code === 0) {
+          dispatch(setUserInfo(username, password))
+          push('/')
+        } else {
+          alert('注册失败')
+        }
+      })
+      .catch(error => {
+        console.log('error from register: ', error)
+      })
   }
 }
